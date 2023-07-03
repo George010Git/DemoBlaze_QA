@@ -10,8 +10,8 @@ public class ProductStorePage {
         this.driver = driver;
     }
 
-    public void clickAddToCart() {
-
+    public void clickAddToCart() throws InterruptedException {
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//a[@onclick='addToCart(1)']")).click();
     }
 

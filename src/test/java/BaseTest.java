@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
@@ -16,17 +17,13 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(Constants.URL);
     }
+    @AfterTest
+    public void afterScenario() {
+        driver.close();
 
-    @Test
-    public void goToWebsiteTest() {
-
-        WebDriver driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.get("https://demoblaze.com/");
     }
-
     @Test
-    public void goToRegisterTest() throws InterruptedException {
+    public void goToRegisterTest()  {
         HomePage homePage = new HomePage(driver);
         BasePage basePage = new BasePage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -39,6 +36,7 @@ public class BaseTest {
         String expectedMessage = Constants.SING_UP_MESSAGE;
         Assert.assertEquals(actualMessage, expectedMessage);
         registerPage.acceptAlertBox();
+
     }
 
     @Test
@@ -52,6 +50,7 @@ public class BaseTest {
         basePage.getActualMessage();
         System.out.println(basePage.getActualMessage());
         Assert.assertTrue(basePage.getActualMessage().contains(Constants.WELCOME));
+
     }
 
     @Test
@@ -104,5 +103,4 @@ public class BaseTest {
         basePage.waitSeconds(2);
 
     }
-
 }
