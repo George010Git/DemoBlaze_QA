@@ -6,13 +6,13 @@ pipeline {
             steps {
                 git 'https://github.com/MocanuGeorge010/DemoBlaze_QA.git'
                // sh './mvnw clean compile'
-                bat '.\\mvnw clean compile'
+                bat 'clean compile'
             }
         }
         stage('Test') {
             steps {
                // sh './mvnw test'
-                 bat '.\\mvnw test'
+                 bat 'test'
             }
 
             post {
