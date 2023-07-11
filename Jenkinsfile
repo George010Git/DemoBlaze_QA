@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/MocanuGeorge010/DemoBlaze_QA.git'
+                git 'https://github.com/George010Git/DemoBlaze_QA.git'
                // sh './mvnw clean compile'
                 bat '.\\mvnw clean compile'
             }
